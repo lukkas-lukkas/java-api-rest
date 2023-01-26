@@ -1,5 +1,6 @@
 package com.medical.api.domain.valueObject;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class Address {
     private String street;
     private String neighborhood;
-    private String zipCode;
+    private String zipcode;
     private String city;
     private String state;
     private String complement;
@@ -20,7 +21,7 @@ public class Address {
     public Address (com.medical.api.domain.dto.Address dto) {
         this.street = dto.street();
         this.neighborhood = dto.neighborhood();
-        this.zipCode = dto.zipCode();
+        this.zipcode = dto.zipcode();
         this.city = dto.city();
         this.state = dto.state();
         this.complement = dto.complement();
