@@ -1,5 +1,7 @@
 package com.medical.api.ui.http;
 
+import com.medical.api.application.createDoctor.CreateDoctorService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,9 +12,12 @@ import com.medical.api.domain.dto.CreateDoctorDto;
 @RestController
 @RequestMapping("doctors")
 public class DoctorController {
-	
+
+	@Autowired
+	private CreateDoctorService createDoctorService;
+
 	@PostMapping
 	public String create(@RequestBody CreateDoctorDto requestBody) {
-		return requestBody.toString();
+		return this.createDoctorService.create(requestBody).toString();
 	}
 }
