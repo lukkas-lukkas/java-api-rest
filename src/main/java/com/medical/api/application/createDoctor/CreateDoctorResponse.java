@@ -3,8 +3,10 @@ package com.medical.api.application.createDoctor;
 import com.medical.api.domain.enums.Specialty;
 import com.medical.api.domain.models.Doctor;
 import lombok.Getter;
+import lombok.ToString;
 
 @Getter
+@ToString
 public class CreateDoctorResponse {
 
     private Long id;

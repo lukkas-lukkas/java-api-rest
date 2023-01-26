@@ -1,6 +1,7 @@
 package com.medical.api.ui.http;
 
 import com.medical.api.application.createDoctor.CreateDoctorService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,6 +18,7 @@ public class DoctorController {
 	private CreateDoctorService createDoctorService;
 
 	@PostMapping
+	@Transactional
 	public String create(@RequestBody CreateDoctorDto requestBody) {
 		return this.createDoctorService.create(requestBody).toString();
 	}

@@ -6,7 +6,7 @@ create table doctors(
     specialty varchar(100) not null,
     street varchar(100) not null,
     neighborhood varchar(100) not null,
-    zipCode varchar(100) not null,
+    zip_code varchar(100) not null,
     city varchar(100) not null,
     state varchar(100) not null,
     complement varchar(100),
