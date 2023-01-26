@@ -20,7 +20,7 @@ public class CreateDoctorService {
                 dto.email(),
                 dto.crm(),
                 dto.specialty(),
-                dto.address()
+                new Address(dto.address())
         );
 
         doctorRepository.save(doctor);
