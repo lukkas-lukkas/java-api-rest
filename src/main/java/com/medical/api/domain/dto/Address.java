@@ -1,4 +1,4 @@
-package com.medical.api.domain.valueObject;
+package com.medical.api.domain.dto;
 
 public record Address (
 	String street,
