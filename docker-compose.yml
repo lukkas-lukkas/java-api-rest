@@ -1,0 +1,18 @@
+version: "3"
+services:
+  db.medical-api.dev:
+    image: mysql:8
+    container_name: db.medical-api.dev
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: "dev_database"
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_ROOT_USER: "root"
+    ports:
+      - 4306:3306
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
