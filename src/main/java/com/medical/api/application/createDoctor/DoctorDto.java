@@ -1,4 +1,4 @@
-package com.medical.api.domain.dto;
+package com.medical.api.application.createDoctor;
 
 import com.medical.api.domain.enums.Specialty;
 import jakarta.validation.Valid;
@@ -7,7 +7,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
-public record CreateDoctorDto (
+public record DoctorDto(
 
 	@NotBlank
 	String name,

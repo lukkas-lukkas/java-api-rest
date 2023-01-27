@@ -1,4 +1,4 @@
-package com.medical.api.domain.dto;
+package com.medical.api.application.createDoctor;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;

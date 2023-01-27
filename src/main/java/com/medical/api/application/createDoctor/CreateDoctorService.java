@@ -1,6 +1,5 @@
 package com.medical.api.application.createDoctor;
 
-import com.medical.api.domain.dto.CreateDoctorDto;
 import com.medical.api.domain.models.Doctor;
 import com.medical.api.domain.valueObject.Address;
 import com.medical.api.infrastructure.persistence.DoctorRepository;
@@ -13,7 +12,7 @@ public class CreateDoctorService {
     @Autowired
     private DoctorRepository doctorRepository;
 
-    public CreateDoctorResponse create (CreateDoctorDto dto) {
+    public Doctor create (DoctorDto dto) {
         var doctor = new Doctor(
                 null,
                 dto.name(),
@@ -25,6 +24,6 @@ public class CreateDoctorService {
 
         doctorRepository.save(doctor);
 
-        return new CreateDoctorResponse(doctor);
+        return doctor;
     }
 }

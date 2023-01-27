@@ -1,13 +1,13 @@
 package com.medical.api.ui.http;
 
-import com.medical.api.application.createDoctor.CreateDoctorResponse;
 import com.medical.api.application.createDoctor.CreateDoctorService;
+import com.medical.api.domain.models.Doctor;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.medical.api.domain.dto.CreateDoctorDto;
+import com.medical.api.application.createDoctor.DoctorDto;
 
 @RestController
 @RequestMapping("doctors")
@@ -19,7 +19,7 @@ public class DoctorController {
 	@PostMapping
 	@ResponseBody
 	@Transactional
-	public CreateDoctorResponse create(@RequestBody @Valid CreateDoctorDto requestBody) {
-		return this.createDoctorService.create(requestBody);
+	public Doctor create(@RequestBody @Valid DoctorDto dto) {
+		return this.createDoctorService.create(dto);
 	}
 }
