@@ -1,4 +1,4 @@
-package com.medical.api.application.createDoctor;
+package com.medical.api.application.doctor;
 
 import com.medical.api.domain.models.Doctor;
 import com.medical.api.infrastructure.persistence.DoctorRepository;
@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class DeleteDoctorService {
+public class ListDoctorService {
 
     @Autowired
     private DoctorRepository repository;
-    public void delete(Long id) {
-        repository.deleteById(id);
+    public List<Doctor> get() {
+        return repository.findAll();
     }
 }

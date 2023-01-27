@@ -1,5 +1,6 @@
-package com.medical.api.application.createDoctor;
+package com.medical.api.application.doctor;
 
+import com.medical.api.application.doctor.dto.DoctorDto;
 import com.medical.api.domain.exceptions.DataNotFoundException;
 import com.medical.api.domain.models.Doctor;
 import com.medical.api.domain.valueObject.Address;

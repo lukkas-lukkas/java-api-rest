@@ -1,6 +1,7 @@
 package com.medical.api.ui.http;
 
-import com.medical.api.application.createDoctor.*;
+import com.medical.api.application.doctor.*;
+import com.medical.api.application.doctor.dto.DoctorDto;
 import com.medical.api.domain.exceptions.DataNotFoundException;
 import com.medical.api.domain.models.Doctor;
 import jakarta.transaction.Transactional;
@@ -10,9 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.servlet.function.EntityResponse;
-
-import javax.print.Doc;
 import java.util.List;
 
 @RestController

@@ -1,4 +1,4 @@
-package com.medical.api.application.createDoctor;
+package com.medical.api.application.doctor.dto;
 
 import com.medical.api.domain.enums.Specialty;
 import jakarta.validation.Valid;
