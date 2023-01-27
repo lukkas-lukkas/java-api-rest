@@ -16,13 +16,8 @@ public class UpdateDoctorService {
     @Autowired
     private DoctorRepository repository;
     public Doctor update(DoctorDto dto, Long id) throws DataNotFoundException {
-        Optional<Doctor> optional = repository.findById(id);
-
-        if (optional.isEmpty()) {
-            throw new DataNotFoundException();
-        }
-
-        var doctor = optional.get();
+        var doctor = repository.findById(id)
+                .orElseThrow(DataNotFoundException::new);
 
         doctor.setName(dto.name());
         doctor.setEmail(dto.email());
