@@ -2,14 +2,20 @@ package com.medical.api.ui.http;
 
 import com.medical.api.application.createDoctor.CreateDoctorService;
 import com.medical.api.application.createDoctor.ListDoctorService;
+import com.medical.api.application.createDoctor.UpdateDoctorService;
+import com.medical.api.domain.exceptions.DataNotFoundException;
 import com.medical.api.domain.models.Doctor;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.medical.api.application.createDoctor.DoctorDto;
+import org.springframework.web.servlet.function.EntityResponse;
 
+import javax.print.Doc;
 import java.util.List;
 
 @RestController
@@ -21,15 +27,32 @@ public class DoctorController {
 	@Autowired
 	private ListDoctorService listDoctorService;
 
+	@Autowired
+	private UpdateDoctorService updateDoctorService;
+
 	@PostMapping
 	@ResponseBody
 	@Transactional
-	public Doctor create(@RequestBody @Valid DoctorDto dto) {
-		return this.createDoctorService.create(dto);
+	public ResponseEntity<Doctor> create(@RequestBody @Valid DoctorDto dto) {
+		var doctor = this.createDoctorService.create(dto);
+
+		return ResponseEntity.status(HttpStatus.CREATED).body(doctor);
 	}
 
 	@GetMapping
 	public List<Doctor> list() {
 		return this.listDoctorService.get();
+	}
+
+	@Transactional
+	@PutMapping("/{id}")
+	public ResponseEntity<?> update(@PathVariable Long id, @RequestBody @Valid DoctorDto dto) {
+		try {
+			var doctor = updateDoctorService.update(dto, id);
+
+			return ResponseEntity.ok().body(doctor);
+		} catch (DataNotFoundException e) {
+			return ResponseEntity.notFound().build();
+		}
 	}
 }
