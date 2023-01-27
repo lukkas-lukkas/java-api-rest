@@ -1,8 +1,6 @@
 package com.medical.api.ui.http;
 
-import com.medical.api.application.createDoctor.CreateDoctorService;
-import com.medical.api.application.createDoctor.ListDoctorService;
-import com.medical.api.application.createDoctor.UpdateDoctorService;
+import com.medical.api.application.createDoctor.*;
 import com.medical.api.domain.exceptions.DataNotFoundException;
 import com.medical.api.domain.models.Doctor;
 import jakarta.transaction.Transactional;
@@ -12,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.medical.api.application.createDoctor.DoctorDto;
 import org.springframework.web.servlet.function.EntityResponse;
 
 import javax.print.Doc;
@@ -29,6 +26,9 @@ public class DoctorController {
 
 	@Autowired
 	private UpdateDoctorService updateDoctorService;
+
+	@Autowired
+	private DeleteDoctorService deleteDoctorService;
 
 	@PostMapping
 	@ResponseBody
@@ -54,5 +54,10 @@ public class DoctorController {
 		} catch (DataNotFoundException e) {
 			return ResponseEntity.notFound().build();
 		}
+	}
+
+	@DeleteMapping("/{id}")
+	public void delete(@PathVariable Long id) {
+		deleteDoctorService.delete(id);
 	}
 }
