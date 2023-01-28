@@ -11,8 +11,8 @@ public class DeleteDoctorService {
     private DoctorRepository repository;
 
     public void delete(Long id) {
-        if (repository.existsById(id)) {
-            repository.deleteById(id);
+        if (this.repository.existsById(id)) {
+            this.repository.deleteById(id);
         }
     }
 }

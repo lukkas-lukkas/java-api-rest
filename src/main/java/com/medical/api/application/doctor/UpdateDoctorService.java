@@ -16,7 +16,7 @@ public class UpdateDoctorService {
     private DoctorRepository repository;
 
     public Doctor update(DoctorDto dto, Long id) throws DataNotFoundException {
-        var doctor = repository.findById(id)
+        var doctor = this.repository.findById(id)
                 .orElseThrow(DataNotFoundException::new);
 
         doctor.setName(dto.name());

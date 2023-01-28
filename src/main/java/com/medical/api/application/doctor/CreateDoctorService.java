@@ -23,7 +23,7 @@ public class CreateDoctorService {
                 new Address(dto.address())
         );
 
-        doctorRepository.save(doctor);
+        this.doctorRepository.save(doctor);
 
         return doctor;
     }

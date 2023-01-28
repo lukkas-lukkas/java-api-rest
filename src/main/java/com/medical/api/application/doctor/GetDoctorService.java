@@ -13,7 +13,7 @@ public class GetDoctorService {
     private DoctorRepository repository;
 
     public Doctor getById(Long id) throws DataNotFoundException {
-        return repository.findById(id)
+        return this.repository.findById(id)
                 .orElseThrow(DataNotFoundException::new);
     }
 }
