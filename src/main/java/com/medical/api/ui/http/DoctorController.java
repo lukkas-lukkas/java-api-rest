@@ -7,11 +7,11 @@ import com.medical.api.domain.models.Doctor;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("doctors")
@@ -39,15 +39,15 @@ public class DoctorController {
 	}
 
 	@GetMapping
-	public List<Doctor> list() {
-		return this.listDoctorService.get();
+	public Page<Doctor> list(Pageable pageable) {
+		return this.listDoctorService.get(pageable);
 	}
 
 	@Transactional
 	@PutMapping("/{id}")
 	public ResponseEntity<?> update(@PathVariable Long id, @RequestBody @Valid DoctorDto dto) {
 		try {
-			var doctor = updateDoctorService.update(dto, id);
+			var doctor = this.updateDoctorService.update(dto, id);
 
 			return ResponseEntity.ok().body(doctor);
 		} catch (DataNotFoundException e) {
@@ -57,6 +57,6 @@ public class DoctorController {
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Long id) {
-		deleteDoctorService.delete(id);
+		this.deleteDoctorService.delete(id);
 	}
 }
