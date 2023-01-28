@@ -12,6 +12,7 @@ public class ListDoctorService {
 
     @Autowired
     private DoctorRepository repository;
+
     public List<Doctor> get() {
         return repository.findAll();
     }

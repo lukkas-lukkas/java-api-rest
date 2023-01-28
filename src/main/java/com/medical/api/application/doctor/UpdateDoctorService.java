@@ -15,6 +15,7 @@ public class UpdateDoctorService {
 
     @Autowired
     private DoctorRepository repository;
+
     public Doctor update(DoctorDto dto, Long id) throws DataNotFoundException {
         var doctor = repository.findById(id)
                 .orElseThrow(DataNotFoundException::new);

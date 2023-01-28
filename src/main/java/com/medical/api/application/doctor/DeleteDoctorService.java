@@ -9,6 +9,7 @@ public class DeleteDoctorService {
 
     @Autowired
     private DoctorRepository repository;
+
     public void delete(Long id) {
         if (repository.existsById(id)) {
             repository.deleteById(id);

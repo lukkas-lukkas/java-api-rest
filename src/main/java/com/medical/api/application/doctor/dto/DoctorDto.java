@@ -27,5 +27,4 @@ public record DoctorDto(
 	@Valid
 	AddressDto address
 ) {
-	
 }
