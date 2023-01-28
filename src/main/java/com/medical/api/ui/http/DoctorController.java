@@ -30,6 +30,9 @@ public class DoctorController {
 	@Autowired
 	private DeleteDoctorService deleteDoctorService;
 
+	@Autowired
+	private GetDoctorService getDoctorService;
+
 	@PostMapping
 	@ResponseBody
 	@Transactional
@@ -42,6 +45,17 @@ public class DoctorController {
 	@GetMapping
 	public Page<Doctor> list(Pageable pageable) {
 		return this.listDoctorService.get(pageable);
+	}
+
+	@GetMapping("/{id}")
+	public ResponseEntity<Doctor> getById(@PathVariable Long id) {
+		try {
+			var doctor = this.getDoctorService.getById(id);
+
+			return ResponseEntity.ok().body(doctor);
+		} catch (DataNotFoundException e) {
+			return ResponseEntity.notFound().build();
+		}
 	}
 
 	@Transactional
