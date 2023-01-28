@@ -2,6 +2,7 @@ package com.medical.api.ui.http;
 
 import com.medical.api.application.doctor.*;
 import com.medical.api.application.doctor.dto.DoctorDto;
+import com.medical.api.application.doctor.dto.UpdateDoctorDto;
 import com.medical.api.domain.exceptions.DataNotFoundException;
 import com.medical.api.domain.models.Doctor;
 import jakarta.transaction.Transactional;
@@ -46,6 +47,18 @@ public class DoctorController {
 	@Transactional
 	@PutMapping("/{id}")
 	public ResponseEntity<?> update(@PathVariable Long id, @RequestBody @Valid DoctorDto dto) {
+		try {
+			var doctor = this.updateDoctorService.update(dto, id);
+
+			return ResponseEntity.ok().body(doctor);
+		} catch (DataNotFoundException e) {
+			return ResponseEntity.notFound().build();
+		}
+	}
+
+	@Transactional
+	@PatchMapping("/{id}")
+	public ResponseEntity<?> updateFields(@PathVariable Long id, @RequestBody @Valid UpdateDoctorDto dto) {
 		try {
 			var doctor = this.updateDoctorService.update(dto, id);
 

@@ -2,12 +2,11 @@ package com.medical.api.domain.valueObject;
 
 import com.medical.api.application.doctor.dto.AddressDto;
 import jakarta.persistence.Embeddable;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Embeddable
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Address {
