@@ -1,5 +1,6 @@
 package com.medical.api.application.doctor.dto;
 
+import com.medical.api.application.shared.dto.AddressDto;
 import com.medical.api.domain.enums.Specialty;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;

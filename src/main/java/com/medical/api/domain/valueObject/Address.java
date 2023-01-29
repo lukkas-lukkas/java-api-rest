@@ -1,6 +1,6 @@
 package com.medical.api.domain.valueObject;
 
-import com.medical.api.application.doctor.dto.AddressDto;
+import com.medical.api.application.shared.dto.AddressDto;
 import jakarta.persistence.Embeddable;
 import lombok.*;
 
