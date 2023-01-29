@@ -1,6 +1,5 @@
 package com.medical.api.domain.valueObject;
 
-import com.medical.api.application.doctor.dto.AddressDto;
 import jakarta.persistence.Embeddable;
 import lombok.*;
 
@@ -17,13 +16,4 @@ public class Address {
     private String city;
     private String state;
     private String complement;
-
-    public Address(AddressDto addressDto) {
-        this.street = addressDto.street();
-        this.neighborhood = addressDto.neighborhood();
-        this.zipcode = addressDto.zipcode();
-        this.city = addressDto.city();
-        this.state = addressDto.state();
-        this.complement = addressDto.complement();
-    }
 }

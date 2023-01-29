@@ -1,4 +1,4 @@
-package com.medical.api.application.doctor.dto;
+package com.medical.api.application.shared.dto;
 
 import com.medical.api.domain.valueObject.Address;
 import jakarta.validation.constraints.Pattern;

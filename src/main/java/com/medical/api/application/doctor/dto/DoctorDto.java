@@ -1,6 +1,8 @@
 package com.medical.api.application.doctor.dto;
 
+import com.medical.api.application.shared.dto.AddressDto;
 import com.medical.api.domain.enums.Specialty;
+import com.medical.api.domain.models.Doctor;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -27,4 +29,14 @@ public record DoctorDto(
 	@Valid
 	AddressDto address
 ) {
+	public Doctor toDoctor() {
+		return new Doctor(
+			null,
+			this.name(),
+			this.email(),
+			this.crm(),
+			this.specialty(),
+			this.address.toAddress()
+		);
+	}
 }
