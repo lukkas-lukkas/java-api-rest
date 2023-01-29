@@ -4,7 +4,6 @@ import com.medical.api.application.doctor.dto.DoctorDto;
 import com.medical.api.application.doctor.dto.UpdateDoctorDto;
 import com.medical.api.domain.exceptions.DataNotFoundException;
 import com.medical.api.domain.models.Doctor;
-import com.medical.api.domain.valueObject.Address;
 import com.medical.api.infrastructure.persistence.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +22,7 @@ public class UpdateDoctorService {
         doctor.setEmail(dto.email());
         doctor.setCrm(dto.crm());
         doctor.setSpecialty(dto.specialty());
-        doctor.setAddress(new Address(dto.address()));
+        doctor.setAddress(dto.address().toAddress());
 
         return doctor;
     }
