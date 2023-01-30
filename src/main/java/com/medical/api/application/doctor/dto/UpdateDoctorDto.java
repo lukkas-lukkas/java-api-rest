@@ -1,27 +1,30 @@
 package com.medical.api.application.doctor.dto;
 
 import com.medical.api.application.shared.dto.UpdateAddressDto;
+import com.medical.api.domain.dto.UpdateModelDto;
 import com.medical.api.domain.enums.Specialty;
 import com.medical.api.domain.models.Doctor;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Pattern;
+import lombok.AllArgsConstructor;
 
-public record UpdateDoctorDto(
+@AllArgsConstructor
+public class UpdateDoctorDto implements UpdateModelDto<Doctor> {
 
 	@Email
-	String email,
+	private String email;
 
 	@Pattern(regexp = "\\d{4,6}")
-	String crm,
+	private String crm;
 
 	@Valid
-	UpdateAddressDto address,
+	private UpdateAddressDto address;
 
-	String name,
-	Specialty specialty
-) {
-	public Doctor updateDoctor(Doctor doctor) {
+	String name;
+	private Specialty specialty;
+
+	public Doctor updateModel(Doctor doctor) {
 		if (this.name != null) {
 			doctor.setName(this.name);
 		}
