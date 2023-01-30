@@ -17,19 +17,13 @@ public class UpdateService<Model> extends PersistenceService<Model> {
         var model = this.repository.findById(id)
                 .orElseThrow(DataNotFoundException::new);
 
-        dto.update(model);
-
-        return model;
+        return dto.update(model);
     }
 
     public Model update(UpdateModelDto<Model> dto, Long id) throws DataNotFoundException {
         var model = repository.findById(id)
                 .orElseThrow(DataNotFoundException::new);
 
-        dto.updateModel(model);
-
-        this.repository.save(model);
-
-        return model;
+        return dto.update(model);
     }
 }

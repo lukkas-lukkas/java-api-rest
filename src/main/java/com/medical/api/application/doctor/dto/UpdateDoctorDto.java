@@ -24,7 +24,7 @@ public class UpdateDoctorDto implements UpdateModelDto<Doctor> {
 	String name;
 	private Specialty specialty;
 
-	public Doctor updateModel(Doctor doctor) {
+	public Doctor update(Doctor doctor) {
 		if (this.name != null) {
 			doctor.setName(this.name);
 		}
