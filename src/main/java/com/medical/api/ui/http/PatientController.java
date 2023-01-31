@@ -2,7 +2,7 @@ package com.medical.api.ui.http;
 
 import com.medical.api.application.patient.dto.PatientDto;
 import com.medical.api.application.patient.dto.UpdatePatientDto;
-import com.medical.api.application.shared.PersistenceServiceBuilder;
+import com.medical.api.application.shared.PersistenceFacade;
 import com.medical.api.domain.exceptions.DataNotFoundException;
 import com.medical.api.domain.models.Patient;
 import com.medical.api.infrastructure.persistence.PatientRepository;
@@ -18,10 +18,10 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("patients")
 public class PatientController {
 
-	private final PersistenceServiceBuilder<Patient> serviceBuilder;
+	private final PersistenceFacade<Patient> serviceBuilder;
 
 	public PatientController(PatientRepository repository) {
-		this.serviceBuilder = new PersistenceServiceBuilder<Patient>(repository);
+		this.serviceBuilder = new PersistenceFacade<Patient>(repository);
 	}
 
 	@PostMapping

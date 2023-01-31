@@ -1,15 +1,15 @@
 package com.medical.api.application.shared;
 
 import com.medical.api.domain.dto.ModelDto;
+import lombok.AllArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CreateService<Model> extends PersistenceService<Model> {
+@AllArgsConstructor
+public class CreateService<Model> {
 
-    public CreateService(JpaRepository<Model, Long> repository) {
-        super(repository);
-    }
+    private JpaRepository<Model, Long> repository;
 
     public Model create (ModelDto<Model> dto) {
         var model = dto.toModel();
