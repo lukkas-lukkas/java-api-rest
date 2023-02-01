@@ -8,7 +8,6 @@ import com.medical.api.domain.models.Doctor;
 import com.medical.api.infrastructure.persistence.DoctorRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -19,11 +18,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("doctors")
 public class DoctorController {
 
-	@Autowired
-	private PersistenceFacade<Doctor> persistenceFacade;
+	private final PersistenceFacade<Doctor> persistenceFacade;
 
-	public DoctorController (DoctorRepository repository) {
-		this.persistenceFacade.setRepository(repository);
+	public DoctorController (DoctorRepository repository, PersistenceFacade<Doctor> persistenceFacade) {
+		persistenceFacade.setRepository(repository);
+		this.persistenceFacade = persistenceFacade;
 	}
 
 	@PostMapping

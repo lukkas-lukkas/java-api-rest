@@ -6,7 +6,9 @@ import com.medical.api.domain.exceptions.DataNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PersistenceFacade<Model> {
 
     private JpaRepository<Model, Long> repository;
