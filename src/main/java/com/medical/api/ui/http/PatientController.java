@@ -1,0 +1,83 @@
+package com.medical.api.ui.http;
+
+import com.medical.api.application.patient.dto.PatientDto;
+import com.medical.api.application.patient.dto.UpdatePatientDto;
+import com.medical.api.application.shared.PersistenceFacade;
+import com.medical.api.domain.exceptions.DataNotFoundException;
+import com.medical.api.domain.models.Patient;
+import com.medical.api.infrastructure.persistence.PatientRepository;
+import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("patients")
+public class PatientController {
+
+	private final PersistenceFacade<Patient> persistenceFacade;
+
+	@Autowired
+	public PatientController(PatientRepository repository) {
+		this.persistenceFacade = new PersistenceFacade<>(repository);
+	}
+
+	@PostMapping
+	@ResponseBody
+	@Transactional
+	public ResponseEntity<Patient> create(@RequestBody @Valid PatientDto dto) {
+		var Patient = this.persistenceFacade.create(dto);
+
+		return ResponseEntity.status(HttpStatus.CREATED).body(Patient);
+	}
+
+	@GetMapping
+	public Page<Patient> list(Pageable pageable) {
+		return this.persistenceFacade.list(pageable);
+	}
+
+	@GetMapping("/{id}")
+	public ResponseEntity<Patient> getById(@PathVariable Long id) {
+		try {
+			var Patient = this.persistenceFacade.get(id);
+
+			return ResponseEntity.ok().body(Patient);
+		} catch (DataNotFoundException e) {
+			return ResponseEntity.notFound().build();
+		}
+	}
+
+	@Transactional
+	@PutMapping("/{id}")
+	public ResponseEntity<?> update(@PathVariable Long id, @RequestBody @Valid PatientDto dto) {
+		try {
+			var Patient = this.persistenceFacade.update(dto, id);
+
+			return ResponseEntity.ok().body(Patient);
+		} catch (DataNotFoundException e) {
+			return ResponseEntity.notFound().build();
+		}
+	}
+
+	@Transactional
+	@PatchMapping("/{id}")
+	public ResponseEntity<?> updateFields(@PathVariable Long id, @RequestBody @Valid UpdatePatientDto dto) {
+		try {
+			var Patient = this.persistenceFacade.update(dto, id);
+
+			return ResponseEntity.ok().body(Patient);
+		} catch (DataNotFoundException e) {
+			return ResponseEntity.notFound().build();
+		}
+	}
+
+	@DeleteMapping("/{id}")
+	public void delete(@PathVariable Long id) {
+		this.persistenceFacade.delete(id);
+	}
+}

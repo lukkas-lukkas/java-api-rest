@@ -10,8 +10,6 @@ services:
       MYSQL_ROOT_USER: "root"
     ports:
       - 4306:3306
-    volumes:
-      - ./dbdata:/var/lib/mysql/
     networks:
       - app-network
 
