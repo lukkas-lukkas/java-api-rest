@@ -3,19 +3,15 @@ package com.medical.api.application.shared;
 import com.medical.api.domain.dto.ModelDto;
 import com.medical.api.domain.dto.UpdateModelDto;
 import com.medical.api.domain.exceptions.DataNotFoundException;
+import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Component;
 
-@Component
+@AllArgsConstructor
 public class PersistenceFacade<Model> {
 
     private JpaRepository<Model, Long> repository;
-
-    public void setRepository(JpaRepository<Model, Long> repository) {
-        this.repository = repository;
-    }
 
     public Model create(ModelDto<Model> modelDto) {
         return new CreateService<Model>(this.repository).create(modelDto);

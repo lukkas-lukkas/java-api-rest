@@ -5,9 +5,7 @@ import com.medical.api.domain.dto.UpdateModelDto;
 import com.medical.api.domain.exceptions.DataNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Service;
 
-@Service
 @AllArgsConstructor
 public class UpdateService<Model> {
 

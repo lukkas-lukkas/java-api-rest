@@ -3,9 +3,7 @@ package com.medical.api.application.shared;
 import com.medical.api.domain.dto.ModelDto;
 import lombok.AllArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Service;
 
-@Service
 @AllArgsConstructor
 public class CreateService<Model> {
 
