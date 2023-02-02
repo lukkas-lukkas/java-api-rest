@@ -1,6 +1,6 @@
 package com.medical.api.application.shared.dto;
 
-import com.medical.api.domain.valueObject.Address;
+import com.medical.api.infrastructure.database.entity.AddressEntity;
 import jakarta.validation.constraints.Pattern;
 
 public record UpdateAddressDto(
@@ -14,7 +14,7 @@ public record UpdateAddressDto(
     String state,
     String complement
 ) {
-    public Address updateAddress(Address address) {
+    public AddressEntity updateAddress(AddressEntity address) {
         if (this.zipcode != null) {
             address.setZipcode(this.zipcode);
         }

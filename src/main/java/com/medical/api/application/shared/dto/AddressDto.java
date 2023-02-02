@@ -1,6 +1,6 @@
 package com.medical.api.application.shared.dto;
 
-import com.medical.api.domain.valueObject.Address;
+import com.medical.api.infrastructure.database.entity.AddressEntity;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
@@ -24,8 +24,8 @@ public record AddressDto (
 
     String complement
 ) {
-    public Address toAddress() {
-        return new Address(
+    public AddressEntity toAddress() {
+        return new AddressEntity(
             this.street,
             this.neighborhood,
             this.zipcode,

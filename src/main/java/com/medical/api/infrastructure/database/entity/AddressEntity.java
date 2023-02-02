@@ -1,14 +1,13 @@
-package com.medical.api.domain.valueObject;
+package com.medical.api.infrastructure.database.entity;
 
 import jakarta.persistence.Embeddable;
 import lombok.*;
 
 @Embeddable
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Address {
+public class AddressEntity {
 
     private String street;
     private String neighborhood;

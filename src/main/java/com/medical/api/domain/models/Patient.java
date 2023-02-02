@@ -1,25 +1,18 @@
 package com.medical.api.domain.models;
 
-import com.medical.api.domain.valueObject.Address;
-import jakarta.persistence.*;
+import com.medical.api.infrastructure.database.entity.AddressEntity;
 import lombok.*;
 
-@Table(name = "patients")
-@Entity(name = "Patient")
 @Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of = "id")
 public class Patient {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String email;
     private String phone;
     private String cpf;
 
-    @Embedded
-    private Address address;
+    private AddressEntity address;
 }
