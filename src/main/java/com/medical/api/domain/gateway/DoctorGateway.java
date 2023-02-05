@@ -20,5 +20,5 @@ public interface DoctorGateway {
 
     List<Doctor> getAll();
 
-    Doctor update(Long id, Doctor doctor) throws DataNotFoundException;
+    void update(Doctor doctor) throws DataNotFoundException;
 }
