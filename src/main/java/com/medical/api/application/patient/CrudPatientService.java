@@ -29,8 +29,11 @@ public class CrudPatientService {
         return gateway.getAll(pageable);
     }
 
-    public void update(Long id, PatientDto dto) throws DataNotFoundException {
-        var doctor = gateway.getById(id).orElseThrow(DataNotFoundException::new);
-        gateway.update(mapper.merge(doctor, dto));
+    public Patient update(Long id, PatientDto dto) throws DataNotFoundException {
+        var patient = gateway.getById(id).orElseThrow(DataNotFoundException::new);
+
+        gateway.update(mapper.merge(patient, dto));
+
+        return patient;
     }
 }
