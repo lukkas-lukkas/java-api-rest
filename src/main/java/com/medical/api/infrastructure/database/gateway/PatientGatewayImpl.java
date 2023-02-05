@@ -45,10 +45,11 @@ public class PatientGatewayImpl implements PatientGateway {
     }
 
     @Override
-    public Patient update(Long id, Patient patient) throws DataNotFoundException {
-        var entity = repository.findById(id).orElseThrow(DataNotFoundException::new);
-        mapper.merge(entity, patient);
+    public void update(Patient patient) throws DataNotFoundException {
+        if (!repository.existsById(patient.getId())) {
+            throw new DataNotFoundException();
+        }
 
-        return mapper.toDomain(entity);
+        repository.save(mapper.toEntity(patient));
     }
 }

@@ -45,10 +45,11 @@ public class DoctorGatewayImpl implements DoctorGateway {
     }
 
     @Override
-    public Doctor update(Long id, Doctor doctor) throws DataNotFoundException {
-        var entity = repository.findById(id).orElseThrow(DataNotFoundException::new);
-        mapper.merge(entity, doctor);
+    public void update(Doctor doctor) throws DataNotFoundException {
+        if (!repository.existsById(doctor.getId())) {
+            throw new DataNotFoundException();
+        }
 
-        return mapper.toDomain(entity);
+        repository.save(mapper.toEntity(doctor));
     }
 }
