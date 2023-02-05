@@ -1,12 +1,8 @@
-package com.medical.api.domain.models;
+package com.medical.api.application.patient;
 
 import com.medical.api.domain.valueObject.Address;
-import lombok.Data;
 
-@Data
-public class Patient {
-
-    private Long id = null;
+public class PatientDto {
     private String name;
     private String email;
     private String phone;
