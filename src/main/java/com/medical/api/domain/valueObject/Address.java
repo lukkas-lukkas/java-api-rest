@@ -1,13 +1,8 @@
 package com.medical.api.domain.valueObject;
 
-import jakarta.persistence.Embeddable;
-import lombok.*;
+import lombok.Data;
 
-@Embeddable
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class Address {
 
     private String street;
