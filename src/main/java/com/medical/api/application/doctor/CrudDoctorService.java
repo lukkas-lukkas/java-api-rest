@@ -3,14 +3,20 @@ package com.medical.api.application.doctor;
 import com.medical.api.domain.exceptions.DataNotFoundException;
 import com.medical.api.domain.gateway.DoctorGateway;
 import com.medical.api.domain.models.Doctor;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
-@RequiredArgsConstructor
+@Service
 public class CrudDoctorService {
 
+    @Autowired
     private DoctorGateway gateway;
+
+    @Autowired
     private DoctorMapper mapper;
 
     public Doctor create(DoctorDto dto) {

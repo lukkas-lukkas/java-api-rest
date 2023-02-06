@@ -5,17 +5,23 @@ import com.medical.api.domain.gateway.DoctorGateway;
 import com.medical.api.domain.models.Doctor;
 import com.medical.api.infrastructure.database.mapper.DoctorMapper;
 import com.medical.api.infrastructure.database.repository.DoctorRepository;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 
-@RequiredArgsConstructor
+@Component
+@AllArgsConstructor
 public class DoctorGatewayImpl implements DoctorGateway {
 
+    @Autowired
     private DoctorRepository repository;
+
+    @Autowired
     private DoctorMapper mapper;
 
     @Override

@@ -6,11 +6,13 @@ import com.medical.api.ui.api.mappers.DoctorMapper;
 import com.medical.api.ui.api.requests.CreateDoctorRequest;
 import com.medical.api.ui.api.requests.UpdateDoctorRequest;
 import com.medical.api.ui.api.responses.DoctorResponse;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Component;
 
-@RequiredArgsConstructor
+@Component
+@AllArgsConstructor
 public class DoctorFacade {
 
     private CrudDoctorService service;
