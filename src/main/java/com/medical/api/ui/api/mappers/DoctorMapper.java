@@ -23,32 +23,40 @@ public class DoctorMapper {
         );
 
         return DoctorDto.builder()
-                .name(request.name())
-                .email(request.email())
-                .crm(request.crm())
-                .specialty(Specialty.ofString(request.specialty()))
-                .address(address)
-                .build();
+            .name(request.name())
+            .email(request.email())
+            .crm(request.crm())
+            .specialty(Specialty.ofString(request.specialty()))
+            .address(address)
+            .build();
     }
 
     public DoctorDto toDto(UpdateDoctorRequest request) {
-        var address = new Address(
-                request.address().street(),
-                request.address().neighborhood(),
-                request.address().zipcode(),
-                request.address().city(),
-                request.address().state(),
-                request.address().complement()
-        );
+        var builder = DoctorDto.builder();
 
-        return DoctorDto.builder()
-                .name(request.name())
-                .email(request.email())
-                .crm(request.crm())
-                .specialty(Specialty.ofString(request.specialty()))
-                .address(address)
-                .build();
-    }
+        if (request.address() != null) {
+            var address = new Address(
+                    request.address().street(),
+                    request.address().neighborhood(),
+                    request.address().zipcode(),
+                    request.address().city(),
+                    request.address().state(),
+                    request.address().complement()
+            );
+            builder.address(address);
+        }
+
+        if (request.specialty() != null) {
+            builder.specialty(Specialty.ofString(request.specialty()));
+        }
+
+        builder
+            .name(request.name())
+            .email(request.email())
+            .crm(request.crm());
+
+        return builder.build();
+}
 
     public DoctorResponse toResponse(Doctor doctor) {
         return new DoctorResponse(
