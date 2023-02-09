@@ -5,14 +5,16 @@ import com.medical.api.domain.gateway.PatientGateway;
 import com.medical.api.domain.models.Patient;
 import com.medical.api.infrastructure.database.mapper.PatientMapper;
 import com.medical.api.infrastructure.database.repository.PatientRepository;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 
-@RequiredArgsConstructor
+@Component
+@AllArgsConstructor
 public class PatientGatewayImpl implements PatientGateway {
 
     private PatientRepository repository;
@@ -31,7 +33,7 @@ public class PatientGatewayImpl implements PatientGateway {
 
     @Override
     public Optional<Patient> getById(Long id) {
-        return Optional.empty();
+        return repository.findById(id).map(mapper::toDomain);
     }
 
     @Override

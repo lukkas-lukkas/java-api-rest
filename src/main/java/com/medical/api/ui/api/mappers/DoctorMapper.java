@@ -56,7 +56,7 @@ public class DoctorMapper {
             .crm(request.crm());
 
         return builder.build();
-}
+    }
 
     public DoctorResponse toResponse(Doctor doctor) {
         return new DoctorResponse(

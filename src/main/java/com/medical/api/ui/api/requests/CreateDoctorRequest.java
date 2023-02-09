@@ -1,7 +1,5 @@
 package com.medical.api.ui.api.requests;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.medical.api.domain.enums.Specialty;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -24,28 +22,6 @@ public record CreateDoctorRequest (
     String specialty,
 
     @Valid
-    Address address
+    CreateAddressRequest address
 ) {
-
-    public record Address(
-        @NotBlank
-        String street,
-
-        @NotBlank
-        String neighborhood,
-
-        @NotBlank
-        @JsonProperty("zip_code")
-        @Pattern(regexp = "\\d{8}")
-        String zipcode,
-
-        @NotBlank
-        String city,
-
-        @NotBlank
-        String state,
-
-        String complement
-    ){
-    }
 }

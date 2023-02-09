@@ -6,10 +6,14 @@ import com.medical.api.ui.api.facades.PatientFacade;
 import com.medical.api.ui.api.requests.CreatePatientRequest;
 import com.medical.api.ui.api.requests.UpdatePatientRequest;
 import com.medical.api.ui.api.responses.PatientResponse;
+import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 
+@Component
+@AllArgsConstructor
 public class PatientControllerImpl implements PatientController {
 
     private PatientFacade facade;

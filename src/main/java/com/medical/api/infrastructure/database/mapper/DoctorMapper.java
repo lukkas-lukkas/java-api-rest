@@ -7,7 +7,7 @@ import com.medical.api.infrastructure.database.entity.AddressEntity;
 import com.medical.api.infrastructure.database.entity.DoctorEntity;
 import org.springframework.stereotype.Component;
 
-@Component("DoctorDatabaseMapper")
+@Component("DatabaseDoctorMapper")
 public class DoctorMapper {
 
     public Doctor toDomain(DoctorEntity doctorEntity) {

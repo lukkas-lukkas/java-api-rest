@@ -23,38 +23,38 @@ public class DoctorMapper {
         doctor.setCrm(dto.getCrm() != null ? dto.getCrm() : doctor.getCrm());
         doctor.setSpecialty(dto.getSpecialty() != null ? dto.getSpecialty() : doctor.getSpecialty());
 
-        var newAdress = doctor.getAddress();
+        var newAddress = doctor.getAddress();
         if (dto.getAddress() != null) {
             var dtoAddress = dto.getAddress();
 
-            newAdress.setStreet(dtoAddress.getStreet() != null ? dtoAddress.getStreet() : newAdress.getStreet());
-            newAdress.setNeighborhood(
+            newAddress.setStreet(dtoAddress.getStreet() != null ? dtoAddress.getStreet() : newAddress.getStreet());
+            newAddress.setNeighborhood(
                 dtoAddress.getNeighborhood() != null ?
                     dtoAddress.getNeighborhood()
-                    : newAdress.getNeighborhood()
+                    : newAddress.getNeighborhood()
             );
-            newAdress.setZipcode(
+            newAddress.setZipcode(
                 dtoAddress.getZipcode() != null ?
                     dtoAddress.getZipcode()
-                    : newAdress.getZipcode()
+                    : newAddress.getZipcode()
             );
-            newAdress.setCity(
+            newAddress.setCity(
                 dtoAddress.getCity() != null ?
                     dtoAddress.getCity()
-                    : newAdress.getCity()
+                    : newAddress.getCity()
             );
-            newAdress.setState(
+            newAddress.setState(
                 dtoAddress.getState() != null ?
                     dtoAddress.getState()
-                    : newAdress.getState()
+                    : newAddress.getState()
             );
-            newAdress.setComplement(
+            newAddress.setComplement(
                 dtoAddress.getComplement() != null ?
                     dtoAddress.getComplement()
-                    : newAdress.getComplement()
+                    : newAddress.getComplement()
             );
         }
-        doctor.setAddress(newAdress);
+        doctor.setAddress(newAddress);
 
         return doctor;
     }

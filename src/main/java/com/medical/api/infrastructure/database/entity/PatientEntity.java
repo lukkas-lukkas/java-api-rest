@@ -10,6 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
+@Builder
 public class PatientEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -3,11 +3,13 @@ package com.medical.api.application.patient;
 import com.medical.api.domain.exceptions.DataNotFoundException;
 import com.medical.api.domain.gateway.PatientGateway;
 import com.medical.api.domain.models.Patient;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
-@RequiredArgsConstructor
+@Service
+@AllArgsConstructor
 public class CrudPatientService {
 
     private PatientGateway gateway;

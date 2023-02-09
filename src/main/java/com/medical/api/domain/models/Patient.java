@@ -1,9 +1,11 @@
 package com.medical.api.domain.models;
 
 import com.medical.api.domain.valueObject.Address;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
 public class Patient {
 
     private Long id = null;
