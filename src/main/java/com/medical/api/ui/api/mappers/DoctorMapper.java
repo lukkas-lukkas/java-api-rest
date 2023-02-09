@@ -60,6 +60,7 @@ public class DoctorMapper {
 
     public DoctorResponse toResponse(Doctor doctor) {
         return new DoctorResponse(
+            doctor.getId(),
             doctor.getName(),
             doctor.getEmail(),
             doctor.getCrm(),
