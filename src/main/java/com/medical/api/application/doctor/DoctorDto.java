@@ -1,15 +1,14 @@
-package com.medical.api.domain.models;
+package com.medical.api.application.doctor;
 
 import com.medical.api.domain.enums.Specialty;
 import com.medical.api.domain.valueObject.Address;
-import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
-public class Doctor {
+@Builder
+public class DoctorDto {
 
-    private Long id = null;
     private String name;
     private String email;
     private String crm;
