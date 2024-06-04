@@ -1,10 +1,12 @@
 package com.lukkas_lukkas.java_rest_api.domain;
 
+import java.util.UUID;
+
 public class Greeting {
-    private final long id;
+    private final UUID id;
     private final String content;
 
-    public Greeting(long id, String content) {
+    public Greeting(UUID id, String content) {
         this.id = id;
         this.content = content;
     }
@@ -13,7 +15,7 @@ public class Greeting {
         return content;
     }
 
-    public long getId() {
+    public UUID getId() {
         return id;
     }
 }
