@@ -3,6 +3,7 @@ package com.lukkas_lukkas.java_rest_api.infrastructure.http.controllers;
 import com.lukkas_lukkas.java_rest_api.application.math.MathDTO;
 import com.lukkas_lukkas.java_rest_api.application.math.MathDataValidator;
 import com.lukkas_lukkas.java_rest_api.application.math.MathHandler;
+import com.lukkas_lukkas.java_rest_api.application.math.MathResponse;
 import com.lukkas_lukkas.java_rest_api.domain.exceptions.ValidationException;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +28,7 @@ public class MathController {
             value = "/math/{operation}/{numberOne}/{numberTwo}",
             method = RequestMethod.POST
     )
-    public Double math(
+    public MathResponse math(
             @PathVariable(value = "operation") String operation,
             @PathVariable(value = "numberOne") String numberOne,
             @PathVariable(value = "numberTwo") String numberTwo
