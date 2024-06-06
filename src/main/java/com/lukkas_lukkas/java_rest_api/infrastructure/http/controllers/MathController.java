@@ -35,22 +35,15 @@ public class MathController {
             @PathVariable(value = "numberOne") String numberOne,
             @PathVariable(value = "numberTwo") String numberTwo
     ) throws ValidationException {
-        try {
-            this.validator.validate(operation, numberOne, numberTwo);
+        this.validator.validate(operation, numberOne, numberTwo);
 
-            MathDTO dto = new MathDTO(operation, numberOne, numberTwo);
+        MathDTO dto = new MathDTO(operation, numberOne, numberTwo);
 
-            MathResponse response = this.handler.handle(dto);
+        MathResponse response = this.handler.handle(dto);
 
-            return new ResponseEntity<>(
-                    response,
-                    HttpStatus.OK
-            );
-        } catch (ValidationException exception) {
-            return new ResponseEntity<>(
-                    exception.getMessages(),
-                    HttpStatus.UNPROCESSABLE_ENTITY
-            );
-        }
+        return new ResponseEntity<>(
+                response,
+                HttpStatus.OK
+        );
     }
 }
