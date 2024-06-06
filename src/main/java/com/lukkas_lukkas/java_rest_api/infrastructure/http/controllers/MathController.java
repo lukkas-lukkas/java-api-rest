@@ -5,6 +5,8 @@ import com.lukkas_lukkas.java_rest_api.application.math.MathDataValidator;
 import com.lukkas_lukkas.java_rest_api.application.math.MathHandler;
 import com.lukkas_lukkas.java_rest_api.application.math.MathResponse;
 import com.lukkas_lukkas.java_rest_api.domain.exceptions.ValidationException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,15 +30,27 @@ public class MathController {
             value = "/math/{operation}/{numberOne}/{numberTwo}",
             method = RequestMethod.POST
     )
-    public MathResponse math(
+    public ResponseEntity<?> math(
             @PathVariable(value = "operation") String operation,
             @PathVariable(value = "numberOne") String numberOne,
             @PathVariable(value = "numberTwo") String numberTwo
     ) throws ValidationException {
-        this.validator.validate(operation, numberOne, numberTwo);
+        try {
+            this.validator.validate(operation, numberOne, numberTwo);
 
-        MathDTO dto = new MathDTO(operation, numberOne, numberTwo);
+            MathDTO dto = new MathDTO(operation, numberOne, numberTwo);
 
-        return this.handler.handle(dto);
+            MathResponse response = this.handler.handle(dto);
+
+            return new ResponseEntity<>(
+                    response,
+                    HttpStatus.OK
+            );
+        } catch (ValidationException exception) {
+            return new ResponseEntity<>(
+                    exception.getMessages(),
+                    HttpStatus.UNPROCESSABLE_ENTITY
+            );
+        }
     }
 }
