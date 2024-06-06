@@ -13,7 +13,7 @@ public class MathDTO {
             String numberTwo
     ) {
         this.operation = MathOperation.valueOf(operation.toUpperCase());
-        this.numberOne = Integer.getInteger(numberOne);
-        this.numberTwo = Integer.getInteger(numberTwo);
+        this.numberOne = Integer.parseInt(numberOne);
+        this.numberTwo = Integer.parseInt(numberTwo);
     }
 }
