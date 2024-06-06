@@ -22,12 +22,12 @@ public class MathDataValidator {
             errors.add("Invalid math operation");
         }
 
-        if (isNegativeNumber(numberOne)) {
-            errors.add("Number one is not a positive number");
+        if (isNotNumber(numberOne)) {
+            errors.add("Number one is not a valid number");
         }
 
-        if (isNegativeNumber(numberTwo)) {
-            errors.add("Number two is not a positive number");
+        if (isNotNumber(numberTwo)) {
+            errors.add("Number two is not a valid number");
         }
 
         if (!errors.isEmpty()) {
@@ -35,10 +35,10 @@ public class MathDataValidator {
         }
     }
 
-    private boolean isNegativeNumber(String string) {
+    private boolean isNotNumber(String string) {
         try {
-            double num = Double.parseDouble(string);
-            return !(num > 0);
+            Integer.parseInt(string);
+            return false;
         } catch (NumberFormatException e) {
             return true;
         }
