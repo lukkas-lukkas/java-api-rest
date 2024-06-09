@@ -5,12 +5,10 @@ import com.lukkas_lukkas.java_rest_api.domain.Person;
 import com.lukkas_lukkas.java_rest_api.infrastructure.http.presenters.PersonView;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/person")
+@RequestMapping("/person/{id}")
 public class GetPersonController {
 
     private final GetPersonHandler handler;
@@ -19,7 +17,7 @@ public class GetPersonController {
         this.handler = handler;
     }
 
-    @RequestMapping("/{id}")
+    @GetMapping
     public ResponseEntity<?> get(@PathVariable(value = "id") String id) {
         Person person = this.handler.get(id);
 
