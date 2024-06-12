@@ -8,8 +8,8 @@ public class PersonView  {
     public final String email;
 
     public PersonView(Person person) {
-        this.id = person.id();
-        this.name = person.name();
-        this.email = person.email();
+        this.id = person.getId();
+        this.name = person.getName();
+        this.email = person.getEmail();
     }
 }
