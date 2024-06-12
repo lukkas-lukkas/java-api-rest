@@ -5,7 +5,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public interface PersonRepository {
-    public Person getById(String id);
+    Person getById(String id);
 
-    public void create(Person person);
+    void create(Person person);
+
+    void update(Person person);
 }
