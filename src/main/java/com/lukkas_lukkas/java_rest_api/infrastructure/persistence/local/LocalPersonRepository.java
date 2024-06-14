@@ -20,7 +20,7 @@ public class LocalPersonRepository implements PersonRepository {
                 "hash123"
         );
 
-        this.people.put(person.id(), person);
+        this.people.put(person.getId(), person);
     }
 
     @Override
@@ -30,7 +30,12 @@ public class LocalPersonRepository implements PersonRepository {
 
     @Override
     public void create(Person person) {
-        this.people.put(person.id(), person);
+        this.people.put(person.getId(), person);
+    }
+
+    @Override
+    public void update(Person person) {
+        this.people.put(person.getId(), person);
     }
 
     @Override
