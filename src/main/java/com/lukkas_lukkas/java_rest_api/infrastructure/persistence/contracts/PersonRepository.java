@@ -8,4 +8,6 @@ public interface PersonRepository {
     public Person getById(String id);
 
     public void create(Person person);
+
+    void delete(String personId);
 }

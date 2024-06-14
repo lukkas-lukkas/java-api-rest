@@ -32,4 +32,9 @@ public class LocalPersonRepository implements PersonRepository {
     public void create(Person person) {
         this.people.put(person.id(), person);
     }
+
+    @Override
+    public void delete(String personId) {
+        this.people.remove(personId);
+    }
 }
