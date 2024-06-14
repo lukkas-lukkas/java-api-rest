@@ -5,7 +5,9 @@ import com.lukkas_lukkas.java_rest_api.infrastructure.persistence.contracts.Pers
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 @Component
 @Primary
@@ -41,5 +43,10 @@ public class LocalPersonRepository implements PersonRepository {
     @Override
     public void delete(String personId) {
         this.people.remove(personId);
+    }
+
+    @Override
+    public List<Person> getAll() {
+        return new ArrayList<>(people.values());
     }
 }

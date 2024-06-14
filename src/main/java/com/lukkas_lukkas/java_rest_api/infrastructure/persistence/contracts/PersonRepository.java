@@ -3,6 +3,8 @@ package com.lukkas_lukkas.java_rest_api.infrastructure.persistence.contracts;
 import com.lukkas_lukkas.java_rest_api.domain.Person;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public interface PersonRepository {
     Person getById(String id);
@@ -12,4 +14,6 @@ public interface PersonRepository {
     void update(Person person);
 
     void delete(String personId);
+
+    List<Person> getAll();
 }
