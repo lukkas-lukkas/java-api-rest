@@ -30,10 +30,10 @@ public class UpdatePersonController {
         Person person = this.handler.handle(dto);
 
         if (null == person) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return ResponseEntity.notFound().build();
         }
 
         PersonView view = new PersonView(person);
-        return new ResponseEntity<>(view, HttpStatus.OK);
+        return ResponseEntity.ok(view);
     }
 }

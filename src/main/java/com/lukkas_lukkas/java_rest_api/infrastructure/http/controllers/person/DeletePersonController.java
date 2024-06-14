@@ -21,6 +21,6 @@ public class DeletePersonController {
     @DeleteMapping
     public ResponseEntity<?> delete(@PathVariable(value = "id") String id) {
         this.handler.handle(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return ResponseEntity.noContent().build();
     }
 }

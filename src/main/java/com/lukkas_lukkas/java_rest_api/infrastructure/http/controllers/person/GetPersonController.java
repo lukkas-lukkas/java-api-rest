@@ -22,10 +22,10 @@ public class GetPersonController {
         Person person = this.handler.get(id);
 
         if (null == person) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return ResponseEntity.notFound().build();
         }
 
         PersonView view = new PersonView(person);
-        return new ResponseEntity<>(view, HttpStatus.OK);
+        return ResponseEntity.ok(view);
     }
 }
