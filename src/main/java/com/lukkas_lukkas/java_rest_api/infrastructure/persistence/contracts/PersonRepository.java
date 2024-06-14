@@ -10,4 +10,6 @@ public interface PersonRepository {
     void create(Person person);
 
     void update(Person person);
+
+    void delete(String personId);
 }

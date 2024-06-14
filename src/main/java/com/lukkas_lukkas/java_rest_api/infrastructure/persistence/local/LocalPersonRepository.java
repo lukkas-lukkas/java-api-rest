@@ -37,4 +37,9 @@ public class LocalPersonRepository implements PersonRepository {
     public void update(Person person) {
         this.people.put(person.getId(), person);
     }
+
+    @Override
+    public void delete(String personId) {
+        this.people.remove(personId);
+    }
 }
