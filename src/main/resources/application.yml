@@ -3,3 +3,10 @@ spring:
     name: java-rest-api
 greeting:
   english: "Hello young"
+management:
+  endpoints:
+    web:
+      exposure:
+        # Do not use it in production, just for studies reasons
+        include:
+          - "*"
