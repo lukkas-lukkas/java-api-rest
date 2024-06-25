@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  api:
+    container_name: java-rest-api.api
+    build:
+      context: .
+    image: java-rest-api
+    ports:
+      - 8080:8080
+    volumes:
+      - /tmp

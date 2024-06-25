@@ -7,10 +7,10 @@ import org.springframework.stereotype.Component;
 public class CalculatorFactory {
     public Calculator factory(MathOperation operation) {
         return switch (operation) {
-            case MathOperation.DIV -> new DivCalculator();
-            case MathOperation.MULT -> new MultiplyCalculator();
-            case MathOperation.SUM -> new SumCalculator();
-            case MathOperation.SUB -> new SubCalculator();
+            case DIV -> new DivCalculator();
+            case MULT -> new MultiplyCalculator();
+            case SUM -> new SumCalculator();
+            case SUB -> new SubCalculator();
         };
     }
 }
