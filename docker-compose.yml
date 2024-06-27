@@ -9,3 +9,17 @@ services:
       - 8080:8080
     volumes:
       - /tmp
+    networks:
+      - bubble
+  database:
+    container_name: java-rest-api.mysql
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    networks:
+      - bubble
+
+networks:
+  bubble:
+    external: true
