@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  api:
+    container_name: java-rest-api.api
+    build:
+      context: .
+    image: java-rest-api
+    ports:
+      - 8080:8080
+    volumes:
+      - /tmp
+    networks:
+      - bubble
+  database:
+    container_name: java-rest-api.mysql
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    networks:
+      - bubble
+
+networks:
+  bubble:
+    external: true

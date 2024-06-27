@@ -14,7 +14,7 @@
 	<name>java-rest-api</name>
 	<description>Project to practice java development and RESTFul API concepts</description>
 	<properties>
-		<java.version>22</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
