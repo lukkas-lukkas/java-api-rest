@@ -1,7 +1,7 @@
 package com.lukkas_lukkas.java_rest_api.application.person.create_person;
 
 import com.lukkas_lukkas.java_rest_api.domain.Person;
-import com.lukkas_lukkas.java_rest_api.infrastructure.persistence.contracts.PersonRepository;
+import com.lukkas_lukkas.java_rest_api.infrastructure.persistence.contracts.PersonRepositoryContract;
 import com.lukkas_lukkas.java_rest_api.infrastructure.security.contracts.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -10,11 +10,11 @@ import java.util.UUID;
 @Component
 public class CreatePersonHandler {
 
-    private final PersonRepository repository;
+    private final PersonRepositoryContract repository;
     private final PasswordEncoder passwordEncoder;
 
     public CreatePersonHandler(
-            PersonRepository repository,
+            PersonRepositoryContract repository,
             PasswordEncoder passwordEncoder
     ) {
         this.repository = repository;

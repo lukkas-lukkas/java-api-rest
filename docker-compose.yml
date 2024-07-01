@@ -5,6 +5,7 @@ services:
     build:
       context: .
     image: java-rest-api
+    restart: always
     ports:
       - "8080:8080"
     volumes:

@@ -5,8 +5,7 @@ import jakarta.persistence.*;
 @Entity
 public class PersonEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
     @Column
     private String name;
@@ -16,4 +15,29 @@ public class PersonEntity {
 
     @Column
     private String password;
+
+    public PersonEntity() {}
+
+    public PersonEntity(String id, String name, String email, String password) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 }
