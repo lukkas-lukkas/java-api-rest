@@ -3,6 +3,7 @@ package com.lukkas_lukkas.java_rest_api.infrastructure.http.controllers.person;
 import com.lukkas_lukkas.java_rest_api.application.person.update_person.UpdatePersonDTO;
 import com.lukkas_lukkas.java_rest_api.application.person.update_person.UpdatePersonHandler;
 import com.lukkas_lukkas.java_rest_api.domain.Person;
+import com.lukkas_lukkas.java_rest_api.domain.exceptions.DataNotFoundException;
 import com.lukkas_lukkas.java_rest_api.infrastructure.http.presenters.PersonView;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,18 +23,18 @@ public class UpdatePersonController {
 
     @PatchMapping
     public ResponseEntity<?> create(@RequestBody Map<String, String> body, @PathVariable(value = "id") String id) {
-        UpdatePersonDTO dto = new UpdatePersonDTO(
-                id,
-                body.get("name"),
-                body.get("email")
-        );
-        Person person = this.handler.handle(dto);
+        try {
+            UpdatePersonDTO dto = new UpdatePersonDTO(
+                    id,
+                    body.get("name"),
+                    body.get("email")
+            );
+            Person person = this.handler.handle(dto);
 
-        if (null == person) {
+            PersonView view = new PersonView(person);
+            return ResponseEntity.ok(view);
+        } catch (DataNotFoundException e) {
             return ResponseEntity.notFound().build();
         }
-
-        PersonView view = new PersonView(person);
-        return ResponseEntity.ok(view);
     }
 }

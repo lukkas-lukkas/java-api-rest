@@ -2,6 +2,7 @@ package com.lukkas_lukkas.java_rest_api.infrastructure.http.controllers.person;
 
 import com.lukkas_lukkas.java_rest_api.application.person.get_person.GetPersonHandler;
 import com.lukkas_lukkas.java_rest_api.domain.Person;
+import com.lukkas_lukkas.java_rest_api.domain.exceptions.DataNotFoundException;
 import com.lukkas_lukkas.java_rest_api.infrastructure.http.presenters.PersonView;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,13 +20,13 @@ public class GetPersonController {
 
     @GetMapping
     public ResponseEntity<?> get(@PathVariable(value = "id") String id) {
-        Person person = this.handler.get(id);
+        try {
+            Person person = this.handler.get(id);
 
-        if (null == person) {
+            PersonView view = new PersonView(person);
+            return ResponseEntity.ok(view);
+        } catch (DataNotFoundException e) {
             return ResponseEntity.notFound().build();
         }
-
-        PersonView view = new PersonView(person);
-        return ResponseEntity.ok(view);
     }
 }
