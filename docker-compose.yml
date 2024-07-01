@@ -4,12 +4,15 @@ services:
     container_name: java-rest-api.api
     build:
       context: .
+      target: dev
     image: java-rest-api
     restart: always
     ports:
       - "8080:8080"
+    working_dir: /app
     volumes:
       - /tmp
+      - .:/app
     depends_on:
       - database
   database:

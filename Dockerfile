@@ -1,5 +1,5 @@
 # Start with a base image containing Java runtime and Maven
-FROM maven:3.8.5-openjdk-17-slim AS build
+FROM maven:3.8.5-openjdk-17-slim AS base
 
 WORKDIR /app
 
@@ -9,14 +9,16 @@ RUN mvn dependency:go-offline -B
 
 COPY ./src ./src
 
-RUN mvn clean package -DskipTests
+EXPOSE 8080
 
-FROM openjdk:17-jdk-slim
+FROM base as dev
+
+CMD mvn spring-boot:run
+
+FROM base as prod
 
 VOLUME /tmp
 
-EXPOSE 8080
-
-COPY --from=build /app/target/*.jar app.jar
+RUN mvn clean package -DskipTests
 
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
