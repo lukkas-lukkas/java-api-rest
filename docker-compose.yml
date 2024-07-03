@@ -4,26 +4,40 @@ services:
     container_name: java-rest-api.api
     build:
       context: .
-      target: release
+      target: build
+    entrypoint: mvn spring-boot:run
     env_file: .env
     image: java-rest-api
     restart: always
     ports:
       - "8080:8080"
-    working_dir: /app
-    volumes:
-      - /tmp
-      - .:/app
     depends_on:
       - database
+    volumes:
+      - .:/app
   database:
     container_name: java-rest-api.db
     image: mysql:8
     environment:
-      MYSQL_DATABASE: mydatabase
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USER}
     ports:
       - "4306:3306"
+  database-ui:
+    image: phpmyadmin
+    container_name: java-rest-api.db-ui
+    restart: always
+    environment:
+      - PMA_HOST=database
+      - PMA_PORT=${DB_PORT}
+      - PMA_USER=${DB_USER}
+      - PMA_PASSWORD=${DB_PASSWORD}
+    ports:
+      - "4307:80"
+    depends_on:
+      - api
 
 networks:
   default:
