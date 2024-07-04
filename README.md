@@ -11,7 +11,7 @@
 make build
 ```
 
-### 3. Iniciar o server com Watcher
+### 3. Iniciar a aplicação
 
 ```
 make run
