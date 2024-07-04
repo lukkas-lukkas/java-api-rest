@@ -1,31 +1,43 @@
 # Java api rest
 
-## Instalação
+## Get started
 
-### 1. Pré requisitos:
-- É preciso ter o [docker](https://docs.docker.com/get-docker/) e o [docker compose](https://docs.docker.com/compose/install/) instalados.
+### 1. Requirements:
+- You need [docker](https://docs.docker.com/get-docker/) and [docker compose](https://docs.docker.com/compose/install/) installed.
 
-### 2. Instalar
+### 2. Install
 
 ```
 make build
 ```
 
-### 3. Iniciar a aplicação
+### 3. Init application
 
 ```
 make run
 ```
 
-## Dependências
-| Serviço         | Descrição                 | Porta |
-|-----------------|---------------------------|-------|
-| **MySql 8**     | Banco de dados            | 4306  |
-| **Php MyAdmin** | GUI para o banco de dados | 4307  |
+## Dependencies
+| Service         | Description      | Port |
+|-----------------|------------------|------|
+| **MySql 8**     | Database         | 4306 |
+| **Php MyAdmin** | GUI for database | 4307 |
 
-## Requisições
+## Requests
 
-| Descrição              | Arquivo                                                        |
-|------------------------|----------------------------------------------------------------|
-| Criar uma pessoa       | [.requests/person/create.http](.requests/person/create.http)   |
-| Buscar todas as pessoas | [.requests/person/get-all.http](.requests/person/get-all.http) |
+### Person
+
+| Description    | File                                                           |
+|----------------|----------------------------------------------------------------|
+| Create person  | [.requests/person/create.http](.requests/person/create.http)   |
+| Delete person  | [.requests/person/delete.http](.requests/person/delete.http)   |
+| Get person     | [.requests/person/get.http](.requests/person/get.http)         |
+| Get all people | [.requests/person/get-all.http](.requests/person/get-all.http) |
+| Update person  | [.requests/person/update.http](.requests/person/update.http)   |
+
+### Others
+
+| Description     | File                                               |
+|-----------------|----------------------------------------------------|
+| Math operations | [.requests/math.http](.requests/math.http)         |
+| Greeting        | [.requests/greeting.http](.requests/greeting.http) |
