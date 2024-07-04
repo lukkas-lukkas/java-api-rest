@@ -5,7 +5,6 @@ import com.lukkas_lukkas.java_rest_api.application.person.update_person.UpdatePe
 import com.lukkas_lukkas.java_rest_api.domain.Person;
 import com.lukkas_lukkas.java_rest_api.domain.exceptions.DataNotFoundException;
 import com.lukkas_lukkas.java_rest_api.infrastructure.http.presenters.PersonView;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +20,7 @@ public class UpdatePersonController {
         this.handler = handler;
     }
 
-    @PatchMapping
+    @PutMapping
     public ResponseEntity<?> create(@RequestBody Map<String, String> body, @PathVariable(value = "id") String id) {
         try {
             UpdatePersonDTO dto = new UpdatePersonDTO(
