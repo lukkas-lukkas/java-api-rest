@@ -4,11 +4,11 @@ import com.lukkas_lukkas.java_rest_api.application.person.update_person.UpdatePe
 import com.lukkas_lukkas.java_rest_api.application.person.update_person.UpdatePersonHandler;
 import com.lukkas_lukkas.java_rest_api.domain.Person;
 import com.lukkas_lukkas.java_rest_api.domain.exceptions.DataNotFoundException;
+import com.lukkas_lukkas.java_rest_api.infrastructure.http.forms.person.UpdatePersonForm;
 import com.lukkas_lukkas.java_rest_api.infrastructure.http.presenters.PersonView;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/person/{id}")
@@ -20,13 +20,13 @@ public class UpdatePersonController {
         this.handler = handler;
     }
 
-    @PutMapping
-    public ResponseEntity<?> create(@RequestBody Map<String, String> body, @PathVariable(value = "id") String id) {
+    @PatchMapping
+    public ResponseEntity<?> create(@Valid @RequestBody UpdatePersonForm body, @PathVariable(value = "id") String id) {
         try {
             UpdatePersonDTO dto = new UpdatePersonDTO(
                     id,
-                    body.get("name"),
-                    body.get("email")
+                    body.name,
+                    body.email
             );
             Person person = this.handler.handle(dto);
 
