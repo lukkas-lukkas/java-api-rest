@@ -5,5 +5,5 @@ Content-Type: application/json; charset=utf-8
 {
   "name": "Anthony Stark",
   "email": "tony@stark.com",
-  "password": "iron-man-is-the-best"
+  "password": "Iron-man-is-the-best#1"
 }
