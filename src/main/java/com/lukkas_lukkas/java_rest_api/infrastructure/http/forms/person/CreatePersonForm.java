@@ -1,5 +1,6 @@
 package com.lukkas_lukkas.java_rest_api.infrastructure.http.forms.person;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -13,6 +14,10 @@ public class CreatePersonForm {
 
     @NotNull
     @Email
+    @Schema(
+            type = "string",
+            format = "email"
+    )
     public final String email;
 
     @NotNull
