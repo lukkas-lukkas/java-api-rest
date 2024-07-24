@@ -4,6 +4,7 @@ import com.lukkas_lukkas.java_rest_api.application.person.update_person.UpdatePe
 import com.lukkas_lukkas.java_rest_api.application.person.update_person.UpdatePersonHandler;
 import com.lukkas_lukkas.java_rest_api.domain.Person;
 import com.lukkas_lukkas.java_rest_api.domain.exceptions.DataNotFoundException;
+import com.lukkas_lukkas.java_rest_api.infrastructure.http.contracts.person.UpdatePersonInterface;
 import com.lukkas_lukkas.java_rest_api.infrastructure.http.forms.person.UpdatePersonForm;
 import com.lukkas_lukkas.java_rest_api.infrastructure.http.presenters.PersonView;
 import jakarta.validation.Valid;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/person/{id}")
-public class UpdatePersonController {
+public class UpdatePersonController implements UpdatePersonInterface {
 
     private final UpdatePersonHandler handler;
 
@@ -21,7 +22,7 @@ public class UpdatePersonController {
     }
 
     @PatchMapping
-    public ResponseEntity<?> create(@Valid @RequestBody UpdatePersonForm body, @PathVariable(value = "id") String id) {
+    public ResponseEntity<PersonView> update(@Valid @RequestBody UpdatePersonForm body, @PathVariable(value = "id") String id) {
         try {
             UpdatePersonDTO dto = new UpdatePersonDTO(
                     id,
