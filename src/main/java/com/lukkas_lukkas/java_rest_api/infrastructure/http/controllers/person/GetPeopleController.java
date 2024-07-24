@@ -2,6 +2,7 @@ package com.lukkas_lukkas.java_rest_api.infrastructure.http.controllers.person;
 
 import com.lukkas_lukkas.java_rest_api.application.person.get_people.GetPeopleHandler;
 import com.lukkas_lukkas.java_rest_api.domain.Person;
+import com.lukkas_lukkas.java_rest_api.infrastructure.http.contracts.person.GetPeopleInterface;
 import com.lukkas_lukkas.java_rest_api.infrastructure.http.presenters.PersonView;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +15,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/person")
-public class GetPeopleController {
+public class GetPeopleController implements GetPeopleInterface {
 
     private final GetPeopleHandler handler;
 

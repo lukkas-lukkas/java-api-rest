@@ -1,7 +1,7 @@
 package com.lukkas_lukkas.java_rest_api.infrastructure.http.controllers.person;
 
 import com.lukkas_lukkas.java_rest_api.application.person.delete_person.DeletePersonHandler;
-import org.springframework.http.HttpStatus;
+import com.lukkas_lukkas.java_rest_api.infrastructure.http.contracts.person.DeletePersonInterface;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/person/{id}")
-public class DeletePersonController {
+public class DeletePersonController implements DeletePersonInterface {
 
     private final DeletePersonHandler handler;
 
