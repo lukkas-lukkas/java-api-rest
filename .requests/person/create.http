@@ -1,9 +1,0 @@
-POST http://localhost:8080/person
-Accept: application/json
-Content-Type: application/json; charset=utf-8
-
-{
-  "name": "Anthony Stark",
-  "email": "tony@stark.com",
-  "password": "Iron-man-is-the-best#1"
-}

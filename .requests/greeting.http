@@ -1,9 +1,0 @@
-### Greeting with default value "World"
-GET http://localhost:8080/greeting
-Accept: application/json
-Content-Type: application/json; charset=utf-8
-
-### Greeting with custom name
-GET http://localhost:8080/greeting?name=Lucas
-Accept: application/json
-Content-Type: application/json; charset=utf-8

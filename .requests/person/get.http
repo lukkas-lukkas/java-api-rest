@@ -1,5 +1,0 @@
-@id = my_person_id_here
-
-GET http://localhost:8080/person/{{id}}
-Accept: application/json
-Content-Type: application/json; charset=utf-8
